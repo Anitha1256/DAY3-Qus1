@@ -1,0 +1,36 @@
+// Function to compare if two JSON objects have the same properties and values
+function areObjectsEqual(obj1, obj2) {
+    // Get the property names (keys) of both objects
+    const keys1 = Object.keys(obj1);
+    const keys2 = Object.keys(obj2);
+
+    // Check if the number of properties is the same
+    if (keys1.length != keys2.length) {
+        return false;
+    }
+    
+    keys1.sort();
+    keys2.sort();
+console.log(keys1,keys2);
+    // Check if all keys and values are the same
+    for (var i=0;i<keys1.length;i++) {
+        if (keys1[i] !== keys2[i]) {
+            return false;
+        } 
+    }
+    for (var i=0;i<keys1.length;i++){
+      var key = keys1[i];
+    if(JSON.stringify(obj1[key]) !== JSON.stringify(obj2[key])) 
+     {  console.log(obj1[key],obj2[key]);
+         return false }
+     
+} return true;
+}
+
+// Sample JSON objects
+var obj1 = { name: "Person1", age: 5 ,favorite :{food :"pizza"} };
+var obj2 = { age: 5, name: "Person1",favorite :{food :"Dhosa"} };
+
+// Compare the JSON objects
+let areEqual = areObjectsEqual(obj1, obj2);
+console.log(areEqual); // Output: true
